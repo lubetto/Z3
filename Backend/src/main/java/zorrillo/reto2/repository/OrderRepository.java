@@ -50,7 +50,6 @@ public class OrderRepository {
     }
 
 
-    //Ordenes de Asesor
     public List<Order> ordersSalesManByID(Integer id) {
         Query query = new Query();
 
@@ -63,7 +62,6 @@ public class OrderRepository {
 
     }
 
-    //Ordenes de Asesor por Estado
     public List<Order> ordersSalesManByState(String state, Integer id) {
         Query query = new Query();
         Criteria criterio = Criteria.where("salesMan.id").is(id)
@@ -76,7 +74,6 @@ public class OrderRepository {
         return orders;
     }
 
-    //Ordenes de Asesor por Fecha
     public List<Order> ordersSalesManByDate(String dateStr, Integer id) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         Query query = new Query();
