@@ -20,8 +20,8 @@ public class OrderController {
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public Order save(@RequestBody Order order){
-        return orderService.save(order);
+    public Order create(@RequestBody Order order){
+        return orderService.create(order);
     }
 
     @GetMapping("/all")
@@ -47,8 +47,26 @@ public class OrderController {
     }
 
     @GetMapping("/zona/{zone}")
-    public List<Order> getOrderZone(@PathVariable("zone") String zone){
-        return orderService.getOrderZone(zone);
+    public List<Order> findByZone(@PathVariable("zone") String zone){
+        return orderService.findByZone(zone);
+    }
+
+    //Reto 4: Ordenes de un asesor
+    @GetMapping("/salesman/{id}")
+    public List<Order> ordersSalesManByID(@PathVariable("id") Integer id){
+        return orderService.ordersSalesManByID(id);
+    }
+
+    //Reto 4: Ordenes de un asesor x Estado
+    @GetMapping("/state/{state}/{id}")
+    public List<Order> ordersSalesManByState(@PathVariable("state") String state, @PathVariable("id") Integer id){
+        return orderService.ordersSalesManByState(state, id);
+    }
+
+    //Reto 4: Ordenes de un asesor x fecha
+    @GetMapping("/date/{date}/{id}")
+    public List<Order> ordersSalesManByDate(@PathVariable("date") String dateStr, @PathVariable("id") Integer id) {
+        return orderService.ordersSalesManByDate(dateStr,id);
     }
 
 }

@@ -34,8 +34,8 @@ public class UserController {
      * Consulta por ID
      */
     @GetMapping("{id}")
-    public Optional<User> getUser(@PathVariable("id") Integer id){
-        return userService.getUser(id);
+    public Optional<User> getUser(@PathVariable("id") Integer idUs){
+        return userService.getUser(idUs);
     }
     /**
      * Consulta si Existe Email
