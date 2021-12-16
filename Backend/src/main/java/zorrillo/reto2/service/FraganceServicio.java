@@ -54,13 +54,11 @@ public class FraganceServicio {
                 if (fragance.getDescription()!=null) {
                     consulta.get().setDescription(fragance.getDescription());
                 }
-                //private boolean availability = true;
 
-                //private double price;
                 if (fragance.getPrice()>0.0) {
                     consulta.get().setPrice(fragance.getPrice());
                 }
-                //private int quantity;
+
                 if (fragance.getQuantity()>0) {
                     consulta.get().setQuantity(fragance.getQuantity());
                 }
@@ -72,6 +70,16 @@ public class FraganceServicio {
             }
         }
         return fragance;
+    }
+
+    //Reto 5
+    public List<Fragance> productByPrice(double price) {
+        return fraganceRepositorio.productByPrice(price);
+    }
+
+    //Reto 5
+    public List<Fragance> findByDescriptionLike(String description) {
+        return fraganceRepositorio.findByDescriptionLike(description);
     }
 
 }

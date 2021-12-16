@@ -43,4 +43,14 @@ public class FraganceControlador {
     public Fragance update(@RequestBody Fragance fragance){
         return fraganceServicio.update(fragance);
     }
+
+    @GetMapping("/price/{price}")
+    public List<Fragance> fraganceByPrice(@PathVariable("price") double precio){
+        return fraganceServicio.productByPrice(precio);
+    }
+
+    @GetMapping("/description/{description}")
+    public List<Fragance> findByDescriptionLike(@PathVariable("description") String description) {
+        return fraganceServicio.findByDescriptionLike(description);
+    }
 }

@@ -30,4 +30,16 @@ public class FraganceRepositorio {
     public void delete(Fragance fragance){
         fraganceCrudRepositorio.delete(fragance);
     }
+
+    public void update(Fragance fragance) {
+        fraganceCrudRepositorio.save(fragance);
+    }
+
+    public List<Fragance> productByPrice(double precio){
+        return fraganceCrudRepositorio.findByPriceLessThanEqual(precio);
+    }
+
+    public List<Fragance> findByDescriptionLike(String description){
+        return fraganceCrudRepositorio.findByDescriptionLike(description);
+    }
 }

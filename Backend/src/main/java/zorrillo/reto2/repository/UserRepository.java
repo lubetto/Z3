@@ -14,34 +14,58 @@ import java.util.Optional;
  */
 @Repository
 public class UserRepository {
+    /**
+     * Inyección Dependecias
+     */
     @Autowired
     private UserCrudRepository userCrudRepository;
-
-    public Optional<User> getUser(Integer id){
-        return userCrudRepository.findById(id);
+    /**
+     * Consulta por ID
+     */
+    public Optional<User> getUser(Integer idUser){
+        return userCrudRepository.findById(idUser);
     }
-
+    /**
+     * Crear Usuario
+     */
     public User create(User user){
         return userCrudRepository.save(user);
     }
-
+    /**
+     * Actualizar Usuario
+     */
     public void update (User user){
         userCrudRepository.save(user);
     }
+    /**
+     * Consultar Usuarios
+     */
     public List<User> getAll(){
         return userCrudRepository.findAll();
     }
-
+    /**
+     * Consulta Existe Email
+     */
     public boolean existeEmail(String email){
         Optional<User> usuario=userCrudRepository.findByEmail(email);
         return !usuario.isEmpty();
     }
-
+    /**
+     * Consulta Email y Contraseña
+     */
     public  Optional<User> autenticateUser(String email, String password){
         return userCrudRepository.findByEmailAndPassword(email, password);
     }
-
+    /**
+     * Borrar Usuario
+     */
     public void delete(User user){
         userCrudRepository.delete(user);
+    }
+    /**
+     * Consulta por mes de cumpleaños
+     */
+    public List<User> birthtDayList(String monthBirthtDay) {
+        return userCrudRepository.findByMonthBirthtDay(monthBirthtDay);
     }
 }
